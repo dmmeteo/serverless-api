@@ -7,26 +7,18 @@ provider:
 
 functions:
   hello:
-    handler: js.handler.hello
-    runtime: nodejs8.10
-    events:
-      - http:
-          path: js-endpoint
-          method: GET
-
-  helloOld:
-    handler: js.handler.helloOld
-    runtime: nodejs8.10
-    events:
-      - http:
-          path: second/endpoint
-          method: GET
-
-  helloPy:
-    handler: handler.hello
     runtime: python3.7
     events:
       - http:
-          path: py-endpoint
-          method: GET
+          method: get
+          path: greet
+    handler: web/handler.hello
+
+  time:
+    runtime: nodejs6.10
+    events:
+      - http:
+          method: get
+          path: time
+    handler: api/handler.timestamp
 
